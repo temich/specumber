@@ -32,13 +32,24 @@ behind. State that several classes share is a class of its own — see [Sharing 
 npm install --save-dev pupumber @cucumber/cucumber
 ```
 
-Pupumber needs Node 24 or later, `@cucumber/cucumber` 13, and a loader that compiles
-TypeScript — `tsx`, `@swc-node/register`, or a `tsc` build. Node's own type stripping is not
-enough: decorators are not erasable, and Node does not run them.
+Pupumber needs Node 24 or later and `@cucumber/cucumber` 13.
+
+Something has to compile the support files before Cucumber imports them. Node will not do it on
+its own: it strips types, but a decorator is not a type, and `node steps.ts` stops at the `@`
+with a `SyntaxError` — `--experimental-transform-types` included. Either a loader compiles them
+as they are imported:
 
 ```sh
 NODE_OPTIONS=--import=tsx cucumber-js
+node --import tsx ./node_modules/.bin/cucumber-js   # the same thing without the variable
 ```
+
+or `tsc` compiles them first, and Cucumber is pointed at the output, which needs no loader at
+all. A `target` of `esnext` leaves standard decorators in the output for the runtime to run, and
+Node has nowhere to run them, so compile to `es2022` or below.
+
+Cucumber's own `--loader` will not do: it registers a module through `module.register`, and
+`tsx` refuses to be loaded that way.
 
 Nothing has to change in your `tsconfig.json`. Pupumber's decorators are written to be applied
 under both decorator proposals — the standard one of TypeScript 5 and later, and the older
