@@ -7,6 +7,12 @@ scenario.
 > Specumber is inspired by the excellent work of [Tim Roberts](https://github.com/timjroberts) and the contributors to [cucumber-js-tsflow](https://github.com/timjroberts/cucumber-js-tsflow).  
 > It is intended as a modern drop-in replacement and passes the original project's test suite.
 
+<br>
+
+<p align="center"><code>npx skills add temich/specumber</code></p>
+
+<br>
+
 ```ts
 import { binding, given, then, when } from 'specumber'
 
@@ -25,9 +31,6 @@ export default class Arithmetic {
   }
 }
 ```
-
-A fresh instance is created for each scenario, so one scenario never sees what another left
-behind. State that several classes share is a class of its own — see [Sharing state](#sharing-state).
 
 ## Install
 
@@ -108,6 +111,9 @@ are registered the moment the class is declared, which is when Cucumber imports 
 
 A method decorated in a class that carries no `@binding()` is registered with nothing, and never
 runs.
+
+A fresh instance is created for each scenario, so one scenario never sees what another left
+behind. State that several classes share is a class of its own — see [Sharing state](#sharing-state).
 
 ## Step definitions
 
@@ -324,6 +330,16 @@ import of the same names works. What differs:
 - `wrapperOptions` is gone, along with the `setDefinitionFunctionWrapper` that Cucumber deprecated.
 - A tag on a step definition decides which binding runs, rather than being carried and ignored.
 - A step is reported as defined where its decorator is written, rather than inside the library.
+
+## The skill
+
+`skills/specumber` is an agent skill: what a scenario is for — documentation of the behaviour it
+proves, not only a check of it — and how to write and bind one here. It installs into whichever
+agents a project uses.
+
+```sh
+npx skills add temich/specumber
+```
 
 ## Requirements
 
