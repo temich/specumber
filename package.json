@@ -1,5 +1,5 @@
 {
-  "name": "pupumber",
+  "name": "specumber",
   "version": "0.1.0",
   "description": "SpecFlow-style bindings for Cucumber, in TypeScript",
   "keywords": [
