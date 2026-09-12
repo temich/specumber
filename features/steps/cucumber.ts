@@ -11,12 +11,14 @@ export default class CucumberSteps {
     this.project = project
   }
 
-  @when('I run cucumber-js')
+  // A run of Cucumber takes as long as the project under test says it does,
+  // which is longer than a step is given by default.
+  @when('I run cucumber-js', { timeout: 60_000 })
   public async run(): Promise<void> {
     await this.project.cucumber()
   }
 
-  @when('I run cucumber-js with env `{}`')
+  @when('I run cucumber-js with env `{}`', { timeout: 60_000 })
   public async runWith(env: string): Promise<void> {
     await this.project.cucumber(Object.fromEntries([env.split('=')]))
   }
