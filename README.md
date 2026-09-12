@@ -4,6 +4,10 @@ SpecFlow-style bindings for [Cucumber](https://github.com/cucumber/cucumber-js):
 definitions and hooks are methods of a class, and the class is what holds the state of a
 scenario.
 
+> Pupumber is inspired by the excellent work of [Tim Roberts](https://github.com/timjroberts) and the contributors to [cucumber-js-tsflow](https://github.com/timjroberts/cucumber-js-tsflow).
+> It is intended as a modern drop-in replacement and passes the original project's test suite.
+
+
 ```ts
 import { binding, given, then, when } from 'pupumber'
 
