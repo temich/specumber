@@ -66,9 +66,9 @@ A feature:
 # features/arithmetic.feature
 
 Feature: Arithmetic
-    Scenario: Adding two numbers
-        Given I enter 2 and 8
-        Then I receive the result 10
+  Scenario: Adding two numbers
+    Given I enter 2 and 8
+    Then I receive the result 10
 ```
 
 The class that implements it, saved where Cucumber looks for support code:
