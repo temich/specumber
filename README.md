@@ -325,6 +325,16 @@ import of the same names works. What differs:
 - A tag on a step definition decides which binding runs, rather than being carried and ignored.
 - A step is reported as defined where its decorator is written, rather than inside the library.
 
+## The skill
+
+`skills/specumber` is an agent skill: what a scenario is for — documentation of the behaviour it
+proves, not only a check of it — and how to write and bind one here. It installs into whichever
+agents a project uses.
+
+```sh
+npx skills add temich/specumber
+```
+
 ## Requirements
 
 |                      |                                               |
