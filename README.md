@@ -7,7 +7,11 @@ scenario.
 > Specumber is inspired by the excellent work of [Tim Roberts](https://github.com/timjroberts) and the contributors to [cucumber-js-tsflow](https://github.com/timjroberts/cucumber-js-tsflow).  
 > It is intended as a modern drop-in replacement and passes the original project's test suite.
 
+<br>
+
 <p align="center"><code>npx skills add temich/specumber</code></p>
+
+<br>
 
 ```ts
 import { binding, given, then, when } from 'specumber'
