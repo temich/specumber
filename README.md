@@ -7,6 +7,8 @@ scenario.
 > Specumber is inspired by the excellent work of [Tim Roberts](https://github.com/timjroberts) and the contributors to [cucumber-js-tsflow](https://github.com/timjroberts/cucumber-js-tsflow).  
 > It is intended as a modern drop-in replacement and passes the original project's test suite.
 
+<p align="center"><code>npx skills add temich/specumber</code></p>
+
 ```ts
 import { binding, given, then, when } from 'specumber'
 
@@ -25,9 +27,6 @@ export default class Arithmetic {
   }
 }
 ```
-
-A fresh instance is created for each scenario, so one scenario never sees what another left
-behind. State that several classes share is a class of its own — see [Sharing state](#sharing-state).
 
 ## Install
 
@@ -108,6 +107,9 @@ are registered the moment the class is declared, which is when Cucumber imports 
 
 A method decorated in a class that carries no `@binding()` is registered with nothing, and never
 runs.
+
+A fresh instance is created for each scenario, so one scenario never sees what another left
+behind. State that several classes share is a class of its own — see [Sharing state](#sharing-state).
 
 ## Step definitions
 
