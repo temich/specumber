@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    target-branch: 'dev'
+    labels:
+      - 'Bump'
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    target-branch: 'dev'
+    labels:
+      - 'Bump'
+    ignore:
+      # The preset from v10 on needs conventional-changelog-writer@9, while
+      # @semantic-release/release-notes-generator still pins ^8. Taking v10
+      # fails the release while rendering the notes:
+      # 'Missing helper: ... requires conventional-changelog-writer@9 or newer'.
+      # Drop this once the generator moves to writer 9.
+      - dependency-name: 'conventional-changelog-conventionalcommits'
+        versions: ['>=10']

@@ -1,0 +1,87 @@
+{
+  "name": "specumber",
+  "version": "0.1.0",
+  "description": "SpecFlow-style bindings for Cucumber, in TypeScript",
+  "keywords": [
+    "bdd",
+    "cucumber",
+    "cucumber-js",
+    "decorators",
+    "gherkin",
+    "specflow",
+    "testing",
+    "typescript"
+  ],
+  "homepage": "https://github.com/temich/specumber#readme",
+  "bugs": {
+    "url": "https://github.com/temich/specumber/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Artem Gurtovoi",
+    "url": "https://github.com/temich"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/temich/specumber.git"
+  },
+  "files": [
+    "dist",
+    "src",
+    "!src/**/*.test.ts"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit && tsc -p features/tsconfig.json --noEmit && tsc -p types/tsconfig.json && tsc -p types/tsconfig.legacy.json",
+    "test": "npm run test:unit && npm run test:features && npm run test:features:legacy",
+    "test:unit": "node --test",
+    "test:features": "NODE_OPTIONS=--import=tsx cucumber-js",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "fmt": "oxfmt .",
+    "fmt:check": "oxfmt --check .",
+    "check": "npm run build && npm run typecheck && npm run lint && npm run fmt:check && npm test",
+    "prepare": "npm run build && (husky || true)",
+    "test:features:legacy": "SPECUMBER_DECORATORS=legacy npm run test:features",
+    "pretest:features": "npm run build"
+  },
+  "dependencies": {
+    "@cucumber/tag-expressions": "^11.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@cucumber/cucumber": "^13.2.1",
+    "@cucumber/messages": "^34.2.1",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/github": "^12.0.9",
+    "@semantic-release/npm": "^13.1.5",
+    "@semantic-release/release-notes-generator": "^14.1.1",
+    "@types/node": "^26.4.0",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
+    "husky": "^9.1.7",
+    "oxfmt": "^0.67.0",
+    "oxlint": "^1.82.0",
+    "semantic-release": "^25.0.9",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  },
+  "peerDependencies": {
+    "@cucumber/cucumber": "^13.0.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
