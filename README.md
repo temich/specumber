@@ -115,31 +115,32 @@ export default class Search {
 Which keyword a step definition is declared with does not narrow what it matches: as in Cucumber
 itself, `Given`, `When` and `Then` in a feature file all match on the text of the step alone.
 
-A step may be given options:
+A step may be given options. A tag expression is Cucumber's
+[own](https://cucumber.io/docs/cucumber/api/#tag-expressions).
 
 ```ts
 @given('the database is seeded', { timeout: 60_000 })
 public seed(): Promise<void> {}
 ```
 
-| Option    | |
-| --------- | --- |
-| `timeout` | Milliseconds the step may run for. |
-| `tag`     | A [tag expression](https://cucumber.io/docs/cucumber/api/#tag-expressions) the step is limited to. See [Tagged steps](#tagged-steps). |
+| Option    |                                                                             |
+| --------- | --------------------------------------------------------------------------- |
+| `timeout` | Milliseconds the step may run for.                                          |
+| `tag`     | A tag expression the step is limited to. See [Tagged steps](#tagged-steps). |
 
 A single word is read as a tag of that name, so `{ tag: 'mobile' }` and `{ tag: '@mobile' }` mean
 the same thing.
 
 ## Hooks
 
-| Decorator      | Runs |
-| -------------- | --- |
-| `@before`      | Before each scenario. |
-| `@after`       | After each scenario. |
-| `@beforeStep`  | Before each step. |
-| `@afterStep`   | After each step. |
-| `@beforeAll`   | Once, before the first scenario. Decorates a static method. |
-| `@afterAll`    | Once, after the last scenario. Decorates a static method. |
+| Decorator     | Runs                                                        |
+| ------------- | ----------------------------------------------------------- |
+| `@before`     | Before each scenario.                                       |
+| `@after`      | After each scenario.                                        |
+| `@beforeStep` | Before each step.                                           |
+| `@afterStep`  | After each step.                                            |
+| `@beforeAll`  | Once, before the first scenario. Decorates a static method. |
+| `@afterAll`   | Once, after the last scenario. Decorates a static method.   |
 
 ```ts
 @binding([Workspace])
@@ -160,11 +161,11 @@ export default class Steps {
 }
 ```
 
-| Option    | |
-| --------- | --- |
-| `timeout` | Milliseconds the hook may run for. |
-| `tag`     | A tag expression the hook is limited to. Not on `@beforeAll` and `@afterAll`, which run outside any scenario. |
-| `name`    | The name the hook is reported under. |
+| Option    |                                                                                      |
+| --------- | ------------------------------------------------------------------------------------ |
+| `timeout` | Milliseconds the hook may run for.                                                   |
+| `tag`     | A tag expression the hook is limited to. Not on the two that run outside a scenario. |
+| `name`    | The name the hook is reported under.                                                 |
 
 `@beforeAll` and `@afterAll` run where no scenario exists, and so against no instance: they
 decorate static methods, and can reach neither the scenario's state nor its context objects.
@@ -214,12 +215,12 @@ If a context object has a `dispose` method, it is called when the scenario ends.
 
 Four context types come from Cucumber rather than from you, and are asked for the same way.
 
-| Type                   | |
-| ---------------------- | --- |
-| `ScenarioInfo`         | The title and tags of the running scenario. |
-| `WorldParameters`      | `worldParameters` of the configuration, or `--world-parameters`, under `.value`. |
-| `CucumberLog`          | `log(text)`, which attaches text to the running step. |
-| `CucumberAttachments`  | `attach(data, mediaType)`, which attaches data to the running step. |
+| Type                  |                                                                                  |
+| --------------------- | -------------------------------------------------------------------------------- |
+| `ScenarioInfo`        | The title and tags of the running scenario.                                      |
+| `WorldParameters`     | `worldParameters` of the configuration, or `--world-parameters`, under `.value`. |
+| `CucumberLog`         | `log(text)`, which attaches text to the running step.                            |
+| `CucumberAttachments` | `attach(data, mediaType)`, which attaches data to the running step.              |
 
 ```ts
 @binding([ScenarioInfo, CucumberLog])
@@ -244,12 +245,12 @@ export default class Steps {
 Cucumber gives a scenario the tags of its feature as well as its own, with nothing to tell the two
 apart. `ScenarioInfo` reads them in three shapes:
 
-| Tag                    | Read by | Answer |
-| ---------------------- | --- | --- |
-| `@slow`                | `getFlag('slow')` | `true` |
-| `@browser(firefox)`    | `getOptionTag('browser')` | `'firefox'` |
-| `@browser(firefox)` twice | `getMultiOptionTag('browser')` | `['firefox', ...]` |
-| `@window({"width":800})` | `getAttributeTag('window')` | `{ width: 800 }`, parsed as JSON |
+| Tag                       | Read by                        | Answer                           |
+| ------------------------- | ------------------------------ | -------------------------------- |
+| `@slow`                   | `getFlag('slow')`              | `true`                           |
+| `@browser(firefox)`       | `getOptionTag('browser')`      | `'firefox'`                      |
+| `@browser(firefox)` twice | `getMultiOptionTag('browser')` | `['firefox', ...]`               |
+| `@window({"width":800})`  | `getAttributeTag('window')`    | `{ width: 800 }`, parsed as JSON |
 
 Where a tag is written twice, `getOptionTag` and `getAttributeTag` answer with the last of them,
 which is the scenario's own when the feature carries one too. `getAttributeTag` answers
@@ -312,12 +313,12 @@ import of the same names works. What differs:
 
 ## Requirements
 
-| | |
-| --- | --- |
-| Node | 24 or later |
-| `@cucumber/cucumber` | 13 |
-| TypeScript | 5 or later, with either decorator proposal |
-| Dependencies | `@cucumber/tag-expressions`, and nothing else |
+|                      |                                               |
+| -------------------- | --------------------------------------------- |
+| Node                 | 24 or later                                   |
+| `@cucumber/cucumber` | 13                                            |
+| TypeScript           | 5 or later, with either decorator proposal    |
+| Dependencies         | `@cucumber/tag-expressions`, and nothing else |
 
 ## License
 
