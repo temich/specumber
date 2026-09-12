@@ -1,0 +1,33 @@
+name: dependabot
+
+# Dependabot's own pull_request runs get a read-only token, so the approval and
+# the merge have to come from a pull_request_target run against dev. It never
+# checks the branch out — nothing from the pull request is executed here.
+
+on:
+  pull_request_target:
+    branches: [dev]
+
+permissions: {}
+
+jobs:
+  merge:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR: ${{ github.event.pull_request.html_url }}
+
+    steps:
+      # Every rebase dismisses this again, and brings the run back to redo it.
+      - name: Approve
+        run: gh pr review "$PR" --approve --body 'Opened by Dependabot — merging once `check` passes.'
+
+      # Arming auto-merge fails on a pull request that is already mergeable, so
+      # fall back to merging it. The ruleset still holds: a failing `check`
+      # leaves both of these refusing to merge.
+      - name: Merge once check passes
+        run: gh pr merge "$PR" --merge --auto || gh pr merge "$PR" --merge
