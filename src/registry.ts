@@ -34,7 +34,7 @@ export interface Declaration extends BindingOptions {
   pattern?: StepPattern
   key: string | symbol
   /** The method itself, which is what identifies the class it belongs to. */
-  method: (...args: any[]) => unknown
+  method: (...args: never[]) => unknown
   /** How many arguments the method takes, which is what Cucumber calls it with. */
   arity: number
   /** Known to a legacy decorator, which is given it; unknown to a standard one. */

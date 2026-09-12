@@ -1,18 +1,17 @@
 import { PROVIDED } from './provided.ts'
 import type { ScenarioInfo } from './scenario.ts'
 
-/** A class Pupumber may construct on its own: a binding class or a context. */
-export type ContextType<T = any> = new (...args: any[]) => T
-
 /**
- * The state of one running scenario.
+ * A class Pupumber may construct on its own: a binding class or a context.
  *
- * Exported for source compatibility with `cucumber-tsflow`; nothing in
- * Pupumber's own interface asks for it.
+ * `never` for the arguments is what makes every class assignable, whatever its
+ * constructor takes; the arguments are supplied from `contexts` below.
  */
+export type ContextType<T = unknown> = new (...args: never[]) => T
+
+/** The state of one running scenario. */
 export interface ScenarioContext {
   scenarioInfo: ScenarioInfo
-  [key: string]: any
 }
 
 /**
@@ -43,8 +42,10 @@ export class ManagedScenarioContext {
     if (PROVIDED.has(type))
       throw new Error(`${type.name} is only available while a scenario is running.`)
 
+    const contexts = this.dependencies(type).map(dependency => this.get(dependency))
+
     // oxlint-disable-next-line new-cap -- a class held in a variable
-    const instance = new type(...this.dependencies(type).map(dependency => this.get(dependency)))
+    const instance = new (type as new (...args: unknown[]) => T)(...contexts)
 
     this.instances.set(type, instance)
 
