@@ -12,7 +12,7 @@ const CUCUMBER = join(ROOT, 'node_modules', '.bin', 'cucumber-js')
  * the ones of TypeScript 5 and later, `legacy` for `experimentalDecorators`.
  * The suite is run once for each.
  */
-const DECORATORS = process.env.PUPUMBER_DECORATORS ?? 'standard'
+const DECORATORS = process.env.SPECUMBER_DECORATORS ?? 'standard'
 
 const MESSAGES = 'messages.ndjson'
 
@@ -59,7 +59,7 @@ export class Project {
       })
     )
 
-    this.link('pupumber', ROOT)
+    this.link('specumber', ROOT)
     this.link('@cucumber/cucumber', join(ROOT, 'node_modules', '@cucumber', 'cucumber'))
     this.link('tsx', join(ROOT, 'node_modules', 'tsx'))
   }

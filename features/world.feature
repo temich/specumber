@@ -21,7 +21,7 @@ Feature: Extracing context objects from World externally
             """ts
             import {State} from '../support/state.ts';
             import {Before, Given} from '@cucumber/cucumber';
-            import {getBindingFromWorld} from 'pupumber';
+            import {getBindingFromWorld} from 'specumber';
 
             Before(function() {
               const state = getBindingFromWorld(this, State);
@@ -69,7 +69,7 @@ Feature: Extracing context objects from World externally
             """ts
             import {State} from '../support/state.ts';
             import {Before, Given} from '@cucumber/cucumber';
-            import {ensureWorldIsInitialized,getBindingFromWorld} from 'pupumber';
+            import {ensureWorldIsInitialized,getBindingFromWorld} from 'specumber';
 
             ensureWorldIsInitialized();
 
@@ -92,7 +92,7 @@ Feature: Extracing context objects from World externally
         And a file named "step_definitions/b.ts" with:
             """ts
             import {State} from '../support/state.ts';
-            import {binding, before, given} from 'pupumber';
+            import {binding, before, given} from 'specumber';
 
             @binding([State])
             class Steps {
@@ -146,7 +146,7 @@ Feature: Extracing context objects from World externally
             """ts
             import {State} from '../support/state.ts';
             import {defineParameterType} from '@cucumber/cucumber';
-            import {ensureWorldIsInitialized,getBindingFromWorld} from 'pupumber';
+            import {ensureWorldIsInitialized,getBindingFromWorld} from 'specumber';
 
             ensureWorldIsInitialized();
 
@@ -173,7 +173,7 @@ Feature: Extracing context objects from World externally
         And a file named "step_definitions/b.ts" with:
             """ts
             import {State} from '../support/state.ts';
-            import {binding, before, given} from 'pupumber';
+            import {binding, before, given} from 'specumber';
 
             @binding([State])
             class Steps {

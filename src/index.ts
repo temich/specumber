@@ -39,7 +39,7 @@ export type { ClassBinder, HookOptions, MemberBinder, StepOptions } from './deco
 export type { StepPattern } from './registry.ts'
 export type { TagName } from './scenario.ts'
 
-/** The same interface again, for `import pupumber from 'pupumber'`. */
+/** The same interface again, for `import specumber from 'specumber'`. */
 export default {
   after,
   afterAll,

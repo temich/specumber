@@ -11,7 +11,7 @@ Feature: Binding steps
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, when, then} from 'pupumber';
+            import {binding, given, when, then} from 'specumber';
 
             @binding()
             class Steps {
@@ -53,7 +53,7 @@ Feature: Binding steps
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given} from 'pupumber';
+            import {binding, given} from 'specumber';
 
             @binding()
             class Step {
@@ -89,7 +89,7 @@ Feature: Binding steps
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given} from 'pupumber';
+            import {binding, given} from 'specumber';
 
             @binding()
             class Steps {

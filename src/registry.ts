@@ -66,11 +66,11 @@ interface State {
 }
 
 /**
- * Two copies of Pupumber can be loaded at once, one imported and one required,
+ * Two copies of Specumber can be loaded at once, one imported and one required,
  * and each would register the scenario hooks again and keep a registry the
  * other cannot see. They share this one instead.
  */
-const SLOT = Symbol.for('pupumber.state')
+const SLOT = Symbol.for('specumber.state')
 
 const store = globalThis as unknown as Record<symbol, State | undefined>
 

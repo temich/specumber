@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import type { DataTable } from '@cucumber/cucumber'
-import { binding, then } from 'pupumber'
+import { binding, then } from 'specumber'
 import { Project } from '../support/project.ts'
 import { Report } from '../support/report.ts'
 

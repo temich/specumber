@@ -4,7 +4,7 @@ Feature: Tag parameters
         Given a file named "step_definitions/steps.ts" with:
             """ts
             import * as assert from 'assert';
-            import {binding, then, ScenarioInfo} from 'pupumber';
+            import {binding, then, ScenarioInfo} from 'specumber';
 
             @binding([ScenarioInfo])
             class Steps {

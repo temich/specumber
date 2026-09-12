@@ -1,14 +1,14 @@
-# Pupumber
+# Specumber
 
 SpecFlow-style bindings for [Cucumber](https://github.com/cucumber/cucumber-js): step
 definitions and hooks are methods of a class, and the class is what holds the state of a
 scenario.
 
-> Pupumber is inspired by the excellent work of [Tim Roberts](https://github.com/timjroberts) and the contributors to [cucumber-js-tsflow](https://github.com/timjroberts/cucumber-js-tsflow).  
+> Specumber is inspired by the excellent work of [Tim Roberts](https://github.com/timjroberts) and the contributors to [cucumber-js-tsflow](https://github.com/timjroberts/cucumber-js-tsflow).  
 > It is intended as a modern drop-in replacement and passes the original project's test suite.
 
 ```ts
-import { binding, given, then, when } from 'pupumber'
+import { binding, given, then, when } from 'specumber'
 
 @binding()
 export default class Arithmetic {
@@ -32,10 +32,10 @@ behind. State that several classes share is a class of its own — see [Sharing 
 ## Install
 
 ```sh
-npm install -D @cucumber/cucumber pupumber
+npm install -D @cucumber/cucumber specumber
 ```
 
-Pupumber needs Node 24 or later and `@cucumber/cucumber` 13.
+Specumber needs Node 24 or later and `@cucumber/cucumber` 13.
 
 Something has to compile the support files before Cucumber imports them. Node will not do it on
 its own: it strips types, but a decorator is not a type, and `node steps.ts` stops at the `@`
@@ -54,7 +54,7 @@ Node has nowhere to run them, so compile to `es2022` or below.
 Cucumber's own `--loader` will not do: it registers a module through `module.register`, and
 `tsx` refuses to be loaded that way.
 
-Nothing has to change in your `tsconfig.json`. Pupumber's decorators are written to be applied
+Nothing has to change in your `tsconfig.json`. Specumber's decorators are written to be applied
 under both decorator proposals — the standard one of TypeScript 5 and later, and the older
 `experimentalDecorators` — so a project keeps whichever it already uses.
 
@@ -77,7 +77,7 @@ The class that implements it, saved where Cucumber looks for support code:
 // features/steps/arithmetic.ts
 
 import assert from 'node:assert/strict'
-import { binding, given, then } from 'pupumber'
+import { binding, given, then } from 'specumber'
 
 @binding()
 export default class Arithmetic {
@@ -301,7 +301,7 @@ Step definitions written the Cucumber way can reach the same context objects, th
 
 ```ts
 import { Before, Given } from '@cucumber/cucumber'
-import { ensureWorldIsInitialized, getBindingFromWorld } from 'pupumber'
+import { ensureWorldIsInitialized, getBindingFromWorld } from 'specumber'
 
 ensureWorldIsInitialized()
 
@@ -319,7 +319,7 @@ The interface is the one
 [cucumber-tsflow](https://github.com/timjroberts/cucumber-js-tsflow) documents, and the same
 import of the same names works. What differs:
 
-- Pupumber is an ES module, and the support files that use it are ES modules: `export = Steps`
+- Specumber is an ES module, and the support files that use it are ES modules: `export = Steps`
   becomes `export default Steps`.
 - `wrapperOptions` is gone, along with the `setDefinitionFunctionWrapper` that Cucumber deprecated.
 - A tag on a step definition decides which binding runs, rather than being carried and ignored.

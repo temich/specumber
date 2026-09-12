@@ -23,7 +23,7 @@ import {
   then,
   when,
   WorldParameters,
-} from 'pupumber'
+} from 'specumber'
 
 ensureWorldIsInitialized()
 

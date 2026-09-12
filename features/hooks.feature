@@ -9,7 +9,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, before} from 'pupumber';
+            import {binding, given, before} from 'specumber';
 
             @binding()
             class Steps {
@@ -42,7 +42,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, after} from 'pupumber';
+            import {binding, given, after} from 'specumber';
 
             @binding()
             class Steps {
@@ -75,7 +75,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, before, after} from 'pupumber';
+            import {binding, given, before, after} from 'specumber';
 
             @binding()
             class Steps {
@@ -118,7 +118,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, before} from 'pupumber';
+            import {binding, given, before} from 'specumber';
 
             @binding()
             class Steps {
@@ -165,7 +165,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, before} from 'pupumber';
+            import {binding, given, before} from 'specumber';
 
             @binding()
             class Steps {
@@ -201,7 +201,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, after} from 'pupumber';
+            import {binding, given, after} from 'specumber';
 
             @binding()
             class Steps {
@@ -247,7 +247,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, before, after} from 'pupumber';
+            import {binding, given, before, after} from 'specumber';
 
             @binding()
             class Steps {
@@ -286,7 +286,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, beforeStep} from 'pupumber';
+            import {binding, given, beforeStep} from 'specumber';
 
             @binding()
             class Steps {
@@ -320,7 +320,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, beforeStep, when} from 'pupumber';
+            import {binding, given, beforeStep, when} from 'specumber';
 
             @binding()
             class Steps {
@@ -364,7 +364,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, beforeStep} from 'pupumber';
+            import {binding, given, beforeStep} from 'specumber';
 
             @binding()
             class Steps {
@@ -410,7 +410,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, afterStep} from 'pupumber';
+            import {binding, given, afterStep} from 'specumber';
 
             @binding()
             class Steps {
@@ -444,7 +444,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, afterStep, when} from 'pupumber';
+            import {binding, given, afterStep, when} from 'specumber';
 
             @binding()
             class Steps {
@@ -488,7 +488,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, afterStep} from 'pupumber';
+            import {binding, given, afterStep} from 'specumber';
 
             @binding()
             class Steps {
@@ -534,7 +534,7 @@ Feature: Support for Cucumber hooks
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, beforeStep, afterStep} from 'pupumber';
+            import {binding, given, beforeStep, afterStep} from 'specumber';
 
             @binding()
             class Steps {

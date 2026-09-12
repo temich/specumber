@@ -55,7 +55,7 @@ export class CucumberAttachments {
 }
 
 /**
- * The types Pupumber constructs itself, from the Cucumber world, when a
+ * The types Specumber constructs itself, from the Cucumber world, when a
  * scenario starts. Asking for one outside a scenario is an error rather than
  * an instance built from nothing.
  */

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { binding, then, when } from 'pupumber'
+import { binding, then, when } from 'specumber'
 import { contains, occurrences } from '../support/output.ts'
 import { Project } from '../support/project.ts'
 

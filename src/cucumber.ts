@@ -22,7 +22,7 @@ import { contextsOf, file, state, type Binding, type Callsite } from './registry
 import { ScenarioInfo } from './scenario.ts'
 
 /** Where the scenario context is kept on the Cucumber world. */
-const CONTEXT = Symbol.for('pupumber.context')
+const CONTEXT = Symbol.for('specumber.context')
 
 type Carrier = Record<symbol, ManagedScenarioContext | undefined>
 
@@ -200,7 +200,7 @@ function arity<T extends Method>(binding: Binding, fn: T): T {
  * Registers with Cucumber as if from the line the decorator was written on.
  *
  * Cucumber locates a step definition by the stack at the moment it is
- * registered, which is inside Pupumber, and reports of a run say where a step
+ * registered, which is inside Specumber, and reports of a run say where a step
  * is defined. This puts the decorator's own line at the top of that stack for
  * as long as the registration takes.
  */
@@ -232,7 +232,7 @@ function site(callsite: Callsite): string {
 }
 
 /**
- * Tells Cucumber that Pupumber's own frames are not yours.
+ * Tells Cucumber that Specumber's own frames are not yours.
  *
  * Cucumber cuts a failed step's stack trace at the first frame it recognises
  * as its own; without this, the frames between your step and Cucumber are the

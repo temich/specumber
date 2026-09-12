@@ -18,7 +18,7 @@ Feature: Custom context objects
         And a file named "step_definitions/one.ts" with:
             """ts
             import {State} from '../support/state.ts';
-            import {binding, when} from 'pupumber';
+            import {binding, when} from 'specumber';
 
             @binding([State])
             class Steps {
@@ -35,7 +35,7 @@ Feature: Custom context objects
         And a file named "step_definitions/two.ts" with:
             """ts
             import {State} from '../support/state.ts';
-            import {binding, then} from 'pupumber';
+            import {binding, then} from 'specumber';
             import * as assert from 'node:assert';
 
             @binding([State])
@@ -67,7 +67,7 @@ Feature: Custom context objects
             """
         And a file named "support/level-one-state.ts" with:
             """ts
-            import {binding} from 'pupumber';
+            import {binding} from 'specumber';
             import {LevelTwoState} from './level-two-state.ts';
 
             @binding([LevelTwoState])
@@ -85,7 +85,7 @@ Feature: Custom context objects
         And a file named "step_definitions/one.ts" with:
             """ts
             import {LevelTwoState} from '../support/level-two-state.ts';
-            import {binding, when} from 'pupumber';
+            import {binding, when} from 'specumber';
 
             @binding([LevelTwoState])
             class Steps {
@@ -103,7 +103,7 @@ Feature: Custom context objects
         And a file named "step_definitions/two.ts" with:
             """ts
             import {LevelOneState} from '../support/level-one-state.ts';
-            import {binding, then} from 'pupumber';
+            import {binding, then} from 'specumber';
             import * as assert from 'node:assert';
 
             @binding([LevelOneState])
@@ -135,7 +135,7 @@ Feature: Custom context objects
             """
         And a file named "support/level-one-state.ts" with:
             """ts
-            import {binding} from 'pupumber';
+            import {binding} from 'specumber';
             import {LevelTwoState} from './level-two-state.ts';
 
             @binding([LevelTwoState])
@@ -146,7 +146,7 @@ Feature: Custom context objects
             """
         And a file named "support/level-two-state.ts" with:
             """ts
-            import {binding} from 'pupumber';
+            import {binding} from 'specumber';
             import {LevelThreeState} from './level-three-state.ts';
 
             @binding([LevelThreeState])
@@ -164,7 +164,7 @@ Feature: Custom context objects
         And a file named "step_definitions/one.ts" with:
             """ts
             import {LevelThreeState} from '../support/level-three-state.ts';
-            import {binding, when} from 'pupumber';
+            import {binding, when} from 'specumber';
 
             @binding([LevelThreeState])
             class Steps {
@@ -182,7 +182,7 @@ Feature: Custom context objects
         And a file named "step_definitions/two.ts" with:
             """ts
             import {LevelOneState} from '../support/level-one-state.ts';
-            import {binding, then} from 'pupumber';
+            import {binding, then} from 'specumber';
             import * as assert from 'node:assert';
 
             @binding([LevelOneState])
@@ -214,7 +214,7 @@ Feature: Custom context objects
             """
         And a file named "support/state.ts" with:
             """ts
-            import {binding} from 'pupumber';
+            import {binding} from 'specumber';
 
             class One {
                 constructor(public stateTwo: StateTwo) { }
@@ -231,7 +231,7 @@ Feature: Custom context objects
         And a file named "step_definitions/one.ts" with:
             """ts
             import {StateTwo} from '../support/state.ts';
-            import {binding, when} from 'pupumber';
+            import {binding, when} from 'specumber';
 
             @binding([StateTwo])
             class StepsOne {
@@ -249,7 +249,7 @@ Feature: Custom context objects
         And a file named "step_definitions/two.ts" with:
             """ts
             import {StateOne} from '../support/state.ts';
-            import {binding, then} from 'pupumber';
+            import {binding, then} from 'specumber';
             import * as assert from 'node:assert';
 
             @binding([StateOne])
@@ -283,7 +283,7 @@ Feature: Custom context objects
         """
         And a file named "support/circular.ts" with:
         """ts
-        import {binding} from 'pupumber';
+        import {binding} from 'specumber';
 
         class One {
             constructor(public stateTwo: StateTwo) { }
@@ -301,7 +301,7 @@ Feature: Custom context objects
         """ts
         import {StateTwo} from '../support/circular.ts';
         import * as assert from 'node:assert';
-        import {binding, when, then} from 'pupumber';
+        import {binding, when, then} from 'specumber';
 
         @binding([StateTwo])
         class Steps {

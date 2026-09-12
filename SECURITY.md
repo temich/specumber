@@ -9,7 +9,7 @@ branches for older versions.
 
 Report privately through GitHub Security Advisories:
 
-https://github.com/temich/pupumber/security/advisories/new
+https://github.com/temich/specumber/security/advisories/new
 
 Please do not open a public issue for a vulnerability. Expect an acknowledgement
 within a week; if a report is confirmed, the fix ships in the next release and

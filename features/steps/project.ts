@@ -1,6 +1,6 @@
 import { basename } from 'node:path'
 import { formatterHelpers, type ITestCaseHookParameter } from '@cucumber/cucumber'
-import { after, before, binding, given } from 'pupumber'
+import { after, before, binding, given } from 'specumber'
 import { Project } from '../support/project.ts'
 
 @binding([Project])

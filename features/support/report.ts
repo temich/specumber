@@ -36,7 +36,7 @@ export class Report {
   /**
    * What was attached to the hook of the scenario.
    *
-   * The first `Before` and the last `After` are Pupumber's own, which set the
+   * The first `Before` and the last `After` are Specumber's own, which set the
    * scenario up and take it down; the ones asked about here are the next in.
    */
   public attachmentsOfHook(scenario: string, keyword: 'Before' | 'After'): Attachment[] {

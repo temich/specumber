@@ -10,7 +10,7 @@ Feature: Cucumber context objects
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, CucumberLog} from 'pupumber';
+            import {binding, given, CucumberLog} from 'specumber';
 
             @binding([CucumberLog])
             class Steps {
@@ -43,7 +43,7 @@ Feature: Cucumber context objects
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given, CucumberAttachments} from 'pupumber';
+            import {binding, given, CucumberAttachments} from 'specumber';
 
             @binding([CucumberAttachments])
             class Steps {
@@ -76,7 +76,7 @@ Feature: Cucumber context objects
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, before, after, given, CucumberAttachments} from 'pupumber';
+            import {binding, before, after, given, CucumberAttachments} from 'specumber';
 
             @binding([CucumberAttachments])
             class Steps {
@@ -125,7 +125,7 @@ Feature: Cucumber context objects
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, then, WorldParameters} from 'pupumber';
+            import {binding, then, WorldParameters} from 'specumber';
             import * as assert from 'node:assert';
 
             @binding([WorldParameters])
@@ -156,7 +156,7 @@ Feature: Cucumber context objects
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, then, ScenarioInfo} from 'pupumber';
+            import {binding, then, ScenarioInfo} from 'specumber';
             import * as assert from 'node:assert';
 
             @binding([ScenarioInfo])

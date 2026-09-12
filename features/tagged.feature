@@ -13,7 +13,7 @@ Feature: Tagged step definitions
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given} from 'pupumber';
+            import {binding, given} from 'specumber';
 
             @binding()
             class Common {
@@ -47,7 +47,7 @@ Feature: Tagged step definitions
             """
         And a file named "step_definitions/steps.ts" with:
             """ts
-            import {binding, given} from 'pupumber';
+            import {binding, given} from 'specumber';
 
             @binding()
             class Mobile {

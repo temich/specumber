@@ -2,7 +2,7 @@ import { PROVIDED } from './provided.ts'
 import type { ScenarioInfo } from './scenario.ts'
 
 /**
- * A class Pupumber may construct on its own: a binding class or a context.
+ * A class Specumber may construct on its own: a binding class or a context.
  *
  * `never` for the arguments is what makes every class assignable, whatever its
  * constructor takes; the arguments are supplied from `contexts` below.
@@ -52,7 +52,7 @@ export class ManagedScenarioContext {
     return instance
   }
 
-  /** Takes an instance Pupumber has made itself, in place of constructing one. */
+  /** Takes an instance Specumber has made itself, in place of constructing one. */
   public provide(instance: object): void {
     const type = instance.constructor as ContextType
 
