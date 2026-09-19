@@ -37,9 +37,10 @@ are what the release notes are written from.
 
 ## Dependency bumps
 
-Dependabot opens its bumps against `dev` weekly, and they merge themselves: the `dependabot`
-workflow approves each one and arms auto-merge, so a bump lands the moment `check` goes green —
-and never lands without it. Major versions are in too.
+Dependabot opens its bumps against `dev` weekly. Minor and patch bumps merge themselves: the
+`dependabot` workflow approves each one and arms auto-merge, so a bump lands the moment `check`
+goes green — and never lands without it. A major bump waits for a review and a merge by hand, as
+does any bump whose commit message does not name its update type.
 
 The approval comes from the Actions token, so _Allow GitHub Actions to create and approve pull
 requests_ has to stay on in the repository settings. To keep a bump out, close it, or comment
