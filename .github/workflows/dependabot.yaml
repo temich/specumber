@@ -20,14 +20,38 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       PR: ${{ github.event.pull_request.html_url }}
+      HEAD: ${{ github.event.pull_request.head.sha }}
 
     steps:
+      # Dependabot writes an update-type line per dependency into the commit
+      # message. A major, or a message without one, is left for a hand merge.
+      - name: Classify
+        id: classify
+        run: |
+          types=$(gh api "repos/$GITHUB_REPOSITORY/commits/$HEAD" --jq .commit.message \
+            | sed -n 's/^ *update-type: *//p')
+          echo "update types: ${types:-none}"
+          if [ -n "$types" ] && ! grep -qv -e semver-minor -e semver-patch <<<"$types"; then
+            echo "minor=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # A pull request can turn major when Dependabot moves it to a newer
+      # version, so auto-merge armed while it was minor has to go.
+      - name: Disarm a major
+        if: steps.classify.outputs.minor != 'true'
+        run: |
+          if [ "$(gh pr view "$PR" --json autoMergeRequest --jq '.autoMergeRequest != null')" = true ]; then
+            gh pr merge "$PR" --disable-auto
+          fi
+
       # Every rebase dismisses this again, and brings the run back to redo it.
       - name: Approve
+        if: steps.classify.outputs.minor == 'true'
         run: gh pr review "$PR" --approve --body 'Opened by Dependabot — merging once `check` passes.'
 
       # Arming auto-merge fails on a pull request that is already mergeable, so
       # fall back to merging it. The ruleset still holds: a failing `check`
       # leaves both of these refusing to merge.
       - name: Merge once check passes
+        if: steps.classify.outputs.minor == 'true'
         run: gh pr merge "$PR" --merge --auto || gh pr merge "$PR" --merge
